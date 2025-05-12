@@ -3,8 +3,7 @@ name: feature_template
 about: 기능 추가 템플릿
 title: ''
 labels: ''
-assignees: ''
-
+assignees: layout-SY
 ---
 
 ## 📌 어떤 기능인가요?
