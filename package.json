@@ -21,6 +21,7 @@
     "sanitize.css": "^13.0.0",
     "storybook": "^8.6.12",
     "styled-components": "^6.1.18",
+    "uuid": "^11.1.0",
     "vite-plugin-compression": "^0.5.1"
   },
   "devDependencies": {
