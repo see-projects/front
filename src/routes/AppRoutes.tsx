@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import Layout from '../layout/Layout';
 import Login from '../pages/Login';
+import OauthCheckComponent from '../components/OauthCheckComponent/OauthCheckComponent';
 
 const AppRoutes = () => {
   const routeList = [
@@ -11,6 +12,14 @@ const AppRoutes = () => {
       element: (
         <Layout>
           <Login />
+        </Layout>
+      ),
+    },
+    {
+      path: `${ROUTES.auth}`,
+      element: (
+        <Layout>
+          <OauthCheckComponent />
         </Layout>
       ),
     },

@@ -2,13 +2,16 @@ import kakao from '../assets/kakaoIcon.svg';
 import google from '../assets/googleIcon.svg';
 import github from '../assets/github-mark-white.svg';
 import naver from '../assets/naverIcon.svg';
+import { makeState } from '../util/makeState';
 
 export const OAUTH_PROVIDERS = [
   {
     name: 'kakao',
     url: `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${
       import.meta.env.VITE_KAKAO_APP_REST_API_KEY
-    }&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URL}`,
+    }&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URL}&state=${makeState(
+      'kakao'
+    )}`,
     icon: kakao,
   },
   {
@@ -25,7 +28,7 @@ export const OAUTH_PROVIDERS = [
 
     url: `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${
       import.meta.env.VITE_NAVER_APP_REST_API_KEY
-    }&state=${import.meta.env.VITE_NAVER_APP_STATE}&redirect_uri=${
+    }&state=${makeState('naver')}&redirect_uri=${
       import.meta.env.VITE_APP_REDIRECT_URL
     }`,
     icon: naver,
