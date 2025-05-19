@@ -20,7 +20,9 @@ export const OAUTH_PROVIDERS = [
       import.meta.env.VITE_GOOGLE_APP_REST_API_KEY
     }&redirect_uri=${
       import.meta.env.VITE_APP_REDIRECT_URL
-    }&response_type=code&scope=${import.meta.env.VITE_GOOGLE_SCOPE}`,
+    }&response_type=code&scope=${
+      import.meta.env.VITE_GOOGLE_APP_SCOPE
+    }&state=${makeState('google')}`,
     icon: google,
   },
   {
@@ -35,7 +37,11 @@ export const OAUTH_PROVIDERS = [
   },
   {
     name: 'github',
-    url: import.meta.env.VITE_APP_BASE_URL_GITHUB,
+    url: `https://github.com/login/oauth/authorize?client_id=${
+      import.meta.env.VITE_GITHUB_APP_REST_API_KEY
+    }&redirect_url=${import.meta.env.VITE_APP_REDIRECT_URL}&state=${makeState(
+      'github'
+    )}`,
     icon: github,
   },
 ];

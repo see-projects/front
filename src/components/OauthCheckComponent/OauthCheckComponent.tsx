@@ -52,6 +52,19 @@ const OauthCheckComponent = () => {
     }
   };
 
+  const githubLogin = async () => {
+    try {
+      const res = await axios.post(
+        `https://github.com/login/oauth/access_token?client_id=${
+          import.meta.env.VITE_GITHUB_APP_REST_API_KEY
+        }&client_secret=${import.meta.env.VITE_GITHUB_APP_SECRETS}&code=${code}`
+      );
+      setData(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     if (provider === 'kakao') {
       getToken();
@@ -59,6 +72,8 @@ const OauthCheckComponent = () => {
       googleLogin();
     } else if (provider === 'naver') {
       naverLogin();
+    } else if (provider === 'github') {
+      githubLogin();
     }
   }, [url]);
 
