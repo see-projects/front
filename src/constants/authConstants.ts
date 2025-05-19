@@ -39,7 +39,7 @@ export const OAUTH_PROVIDERS = [
     name: 'github',
     url: `https://github.com/login/oauth/authorize?client_id=${
       import.meta.env.VITE_GITHUB_APP_REST_API_KEY
-    }&redirect_url=${import.meta.env.VITE_APP_REDIRECT_URL}&state=${makeState(
+    }&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URL}&state=${makeState(
       'github'
     )}`,
     icon: github,

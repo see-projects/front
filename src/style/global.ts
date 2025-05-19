@@ -11,13 +11,6 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
   }
-  html {
-    font-family: 'Pretendard';
-  }
-  body {
-    font-family: 'Pretendard';
-
-  }
   h1 {
     margin: 0;
   }
@@ -32,8 +25,8 @@ export const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     border: 0;
     &:focus {
-      box-shadow: none;
-      outline: none;
+      outline: 2px solid #ffffff;       
+      outline-offset: 2px;
     }
   }
 

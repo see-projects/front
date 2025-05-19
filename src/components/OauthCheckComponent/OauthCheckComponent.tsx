@@ -7,17 +7,18 @@ const OauthCheckComponent = () => {
   const url = new URL(window.location.href);
   const code = url.searchParams.get('code');
   const rawState = url.searchParams.get('state');
-  const { provider } = JSON.parse(atob(decodeURIComponent(rawState!)));
+  const { provider } = rawState
+    ? JSON.parse(atob(decodeURIComponent(rawState!)))
+    : { provider: null };
 
   const [data, setData] = useState<AxiosResponse>();
 
-  const getToken = async () => {
+  const kakaoLogin = async () => {
     const payload = qs.stringify({
       grant_type: 'authorization_code',
       client_id: `${import.meta.env.VITE_KAKAO_APP_REST_API_KEY}`,
       redirect_uri: `${import.meta.env.VITE_APP_REDIRECT_URL}`,
       code: code,
-      client_secret: '',
     });
     try {
       const res = await axios.post(
@@ -26,7 +27,7 @@ const OauthCheckComponent = () => {
       );
       setData(res);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -53,21 +54,26 @@ const OauthCheckComponent = () => {
   };
 
   const githubLogin = async () => {
+    const payload = qs.stringify({
+      client_id: import.meta.env.VITE_GITHUB_APP_REST_API_KEY,
+      client_secret: import.meta.env.VITE_GITHUB_APP_SECRETS,
+      code: code,
+    });
+
     try {
       const res = await axios.post(
-        `https://github.com/login/oauth/access_token?client_id=${
-          import.meta.env.VITE_GITHUB_APP_REST_API_KEY
-        }&client_secret=${import.meta.env.VITE_GITHUB_APP_SECRETS}&code=${code}`
+        `https://github.com/login/oauth/access_token`,
+        payload
       );
       setData(res);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
   useEffect(() => {
     if (provider === 'kakao') {
-      getToken();
+      kakaoLogin();
     } else if (provider === 'google') {
       googleLogin();
     } else if (provider === 'naver') {
@@ -75,7 +81,7 @@ const OauthCheckComponent = () => {
     } else if (provider === 'github') {
       githubLogin();
     }
-  }, [url]);
+  }, [code, provider]);
 
   return (
     <div>

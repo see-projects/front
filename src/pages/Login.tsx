@@ -31,6 +31,7 @@ const Login = () => {
         <S.OAuthIconsArea>
           {OAUTH_PROVIDERS.map((oauth) => (
             <S.OAuthIcons
+              key={oauth.name}
               onClick={() => handleOAuthLogin(oauth.url, oauth.name)}
             >
               <S.IconsImage src={oauth.icon} />

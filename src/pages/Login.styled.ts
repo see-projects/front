@@ -2,19 +2,22 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 `;
 
 export const Wrapper = styled.div`
-  width: 600px;
-  height: 500px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 500px;
   padding: 48px 64px;
   background-color: #b3ffff;
   border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 export const LogoWrapper = styled.div`
@@ -93,6 +96,22 @@ export const OAuthIcons = styled.button`
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid #b3ffff;
+    outline-offset: 2px;
+  }
 `;
 
 export const IconsImage = styled.img``;
