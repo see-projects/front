@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import LoadingSpinner from '../common/LoadingSpinner';
+import LoadingSpinner from '../common/loadingSpinner/LoadingSpinner';
 import axios, { type AxiosResponse } from 'axios';
 import qs from 'qs';
 
