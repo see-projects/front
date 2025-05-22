@@ -1,9 +1,11 @@
 import * as S from './Login.styled';
-import mainLogo from '../assets/logo.svg';
-import emailIcon from '../assets/email.svg';
-import { OAUTH_PROVIDERS } from '../constants/authConstants';
+import mainLogo from '../../assets/logo.svg';
+import emailIcon from '../../assets/email.svg';
+import { OAUTH_PROVIDERS } from '../../constants/authConstants';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const handleOAuthLogin = (loginUrl: string, name: string) => {
     window.open(loginUrl, `${name} Login`, 'width=500, height=700');
   };
@@ -15,7 +17,10 @@ const Login = () => {
           <S.Logo src={mainLogo} />
         </S.LogoWrapper>
         <S.Produce>로그인으로 전 세계 영화를 감상하세요 !</S.Produce>
-        <S.EmailLoginButton role='link'>
+        <S.EmailLoginButton
+          role='link'
+          onClick={() => navigate('/login/email')}
+        >
           <S.EmailLogo src={emailIcon} />
           <S.SpanText>이메일로 시작</S.SpanText>
           <S.SpaceArea></S.SpaceArea>

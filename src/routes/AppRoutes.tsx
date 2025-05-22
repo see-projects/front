@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import Layout from '../layout/Layout';
-import Login from '../pages/Login';
+import Login from '../pages/login/Login';
 import OauthCheckComponent from '../components/OauthCheckComponent/OauthCheckComponent';
+import LoginWithEmail from '../pages/login/LoginWithEmail';
 
 const AppRoutes = () => {
   const routeList = [
@@ -12,6 +13,14 @@ const AppRoutes = () => {
       element: (
         <Layout>
           <Login />
+        </Layout>
+      ),
+    },
+    {
+      path: `${ROUTES.withEmail}`,
+      element: (
+        <Layout>
+          <LoginWithEmail />
         </Layout>
       ),
     },
