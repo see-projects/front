@@ -2,9 +2,31 @@ import * as S from './LoginWithEmail.styled';
 import arrow_left from '../../assets/arrow_left.svg';
 import { useNavigate } from 'react-router-dom';
 import mainLogo from '../../assets/logo.svg';
+import { useForm } from 'react-hook-form';
+import {
+  LoginScheme,
+  type LoginSchemeType,
+} from '../../constants/authZodConstants';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const LoginWithEmail = () => {
   const navigate = useNavigate();
+
+  const {
+    handleSubmit: onSubmitLogin,
+    formState: { errors, isValid },
+    register,
+  } = useForm<LoginSchemeType>({
+    resolver: zodResolver(LoginScheme),
+    mode: 'onChange',
+    defaultValues: { email: '', password: '' },
+  });
+
+  const onSubmit = (data: LoginSchemeType) => {
+    console.log(data);
+    console.log(errors);
+  };
+
   return (
     <S.Container>
       <S.Wrapper>
@@ -17,21 +39,33 @@ const LoginWithEmail = () => {
         <S.LogoWrapper>
           <S.Logo src={mainLogo} />
         </S.LogoWrapper>
-        <S.LoginArea>
+        <S.LoginArea onSubmit={onSubmitLogin(onSubmit)}>
           <S.LoginInputArea>
             <S.LoginCenterArea>
-              <S.LoginEmailInput placeholder='이메일 입력' />
+              <S.LoginInput
+                type='text'
+                placeholder='이메일 입력'
+                name='email'
+                register={register}
+              />
               <S.Line />
             </S.LoginCenterArea>
           </S.LoginInputArea>
           <S.LoginInputArea>
             <S.LoginCenterArea>
-              <S.LoginPwInput placeholder='비밀번호 입력' />
+              <S.LoginInput
+                type='password'
+                placeholder='비밀번호 입력'
+                name='password'
+                register={register}
+              />
               <S.Line />
             </S.LoginCenterArea>
           </S.LoginInputArea>
           <S.LoginButtonArea>
-            <S.LoginButton type='submit'>로그인</S.LoginButton>
+            <S.LoginButton type='submit' disabled={!isValid}>
+              로그인
+            </S.LoginButton>
           </S.LoginButtonArea>
         </S.LoginArea>
         <S.DividerArea>

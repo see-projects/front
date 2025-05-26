@@ -1,12 +1,18 @@
-import React from 'react';
 import * as S from './AuthInput.styled';
+import { type UseFormRegister } from 'react-hook-form';
+import type { LoginSchemeType } from '../../../constants/authZodConstants';
 
 interface AuthInputProps {
+  name: 'email' | 'password';
+  register: UseFormRegister<LoginSchemeType>;
   placeholder: string;
+  type: 'text' | 'password';
 }
 
-const AuthInput = ({ placeholder }: AuthInputProps) => {
-  return <S.Container placeholder={placeholder} />;
+const AuthInput = ({ name, register, placeholder, type }: AuthInputProps) => {
+  return (
+    <S.Container type={type} placeholder={placeholder} {...register(name)} />
+  );
 };
 
 export default AuthInput;

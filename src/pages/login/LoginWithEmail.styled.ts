@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import AuthInput from '../../components/common/input/AuthInput';
 
 export const Container = styled.div`
@@ -69,9 +69,7 @@ export const LoginCenterArea = styled.div`
 
 export const Line = styled.hr``;
 
-export const LoginEmailInput = styled(AuthInput)``;
-
-export const LoginPwInput = styled(AuthInput)``;
+export const LoginInput = styled(AuthInput)``;
 
 export const LoginButtonArea = styled.div`
   display: flex;
@@ -83,7 +81,6 @@ export const LoginButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ccc;
   color: rgb(255, 255, 255);
   border-radius: 4px;
   font-weight: 700;
@@ -94,6 +91,13 @@ export const LoginButton = styled.button`
   margin-top: 10px;
   margin-bottom: 30px;
   cursor: pointer;
+
+  ${({ disabled }) =>
+    disabled
+      ? css`
+          background-color: #ccc;
+        `
+      : `background-color : #eee`};
 `;
 
 export const DividerArea = styled.div`
