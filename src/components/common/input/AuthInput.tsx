@@ -1,6 +1,6 @@
+import type { LoginSchemeType } from '../../../models/auth';
 import * as S from './AuthInput.styled';
 import { type UseFormRegister } from 'react-hook-form';
-import type { LoginSchemeType } from '../../../constants/authZodConstants';
 
 interface AuthInputProps {
   name: 'email' | 'password';
