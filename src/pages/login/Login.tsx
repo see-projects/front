@@ -26,7 +26,9 @@ const Login = () => {
           <S.SpaceArea></S.SpaceArea>
         </S.EmailLoginButton>
         <S.DividerArea>
-          <S.Divider />
+          <S.Divider>
+            <S.Or>or</S.Or>
+          </S.Divider>
         </S.DividerArea>
         <S.SocielLoginSentenceArea>
           <S.SocielLoginSentence>
