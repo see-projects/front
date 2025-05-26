@@ -3,11 +3,9 @@ import arrow_left from '../../assets/arrow_left.svg';
 import { useNavigate } from 'react-router-dom';
 import mainLogo from '../../assets/logo.svg';
 import { useForm } from 'react-hook-form';
-import {
-  LoginScheme,
-  type LoginSchemeType,
-} from '../../constants/authZodConstants';
+import { LoginScheme } from '../../constants/authZodConstants';
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { LoginSchemeType } from '../../models/auth';
 
 const LoginWithEmail = () => {
   const navigate = useNavigate();
