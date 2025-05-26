@@ -68,10 +68,24 @@ export const DividerArea = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Divider = styled.hr`
+export const Divider = styled.div`
   width: 60%;
+  position: relative;
+  height: 1px;
   background-color: #ccc;
   opacity: 40%;
+`;
+
+export const Or = styled.span`
+  display: inline-block;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #b3ffff;
+  padding: 0 5px;
+  color: #666;
+  font-size: 13px;
 `;
 
 export const SocielLoginSentenceArea = styled.div`
