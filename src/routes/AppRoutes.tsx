@@ -4,6 +4,8 @@ import Layout from '../layout/Layout';
 import Login from '../pages/login/Login';
 import OauthCheckComponent from '../components/OauthCheckComponent/OauthCheckComponent';
 import LoginWithEmail from '../pages/login/LoginWithEmail';
+import SignUp from '../pages/signup/SignUp';
+import ChangePassword from '../pages/changePassword/ChangePassword';
 
 const AppRoutes = () => {
   const routeList = [
@@ -29,6 +31,22 @@ const AppRoutes = () => {
       element: (
         <Layout>
           <OauthCheckComponent />
+        </Layout>
+      ),
+    },
+    {
+      path: `${ROUTES.signUp}`,
+      element: (
+        <Layout>
+          <SignUp />
+        </Layout>
+      ),
+    },
+    {
+      path: `${ROUTES.changePassword}`,
+      element: (
+        <Layout>
+          <ChangePassword />
         </Layout>
       ),
     },
