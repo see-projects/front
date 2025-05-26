@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import AuthInput from '../../components/common/input/AuthInput';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 100%;
@@ -54,7 +55,7 @@ export const Logo = styled.img`
 export const LoginArea = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 0px 57px;
+  padding: 0px 50px;
 `;
 
 export const LoginInputArea = styled.div`
@@ -62,26 +63,48 @@ export const LoginInputArea = styled.div`
   justify-content: center;
 `;
 
-export const LoginCenterArea = styled.div`
-  width: 80%;
-  margin-bottom: 25px;
+export const Line = styled.hr`
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  opacity: 40%;
 `;
 
-export const Line = styled.hr``;
+export const LoginCenterArea = styled.div<{ $emailExists: boolean }>`
+  width: 100%;
+  visibility: ${({ $emailExists }) => ($emailExists ? 'visible' : 'hidden')};
+  margin-bottom: 60px;
 
-export const LoginInput = styled(AuthInput)``;
+  &:focus-within ${Line} {
+    transform: scaleX(1);
+    background-color: #ff614d;
+    opacity: 1;
+  }
+`;
+
+export const LoginInput = styled(AuthInput)`
+  margin-top: 15px;
+`;
+
+export const InputLabelArea = styled.div`
+  margin-bottom: 10px;
+`;
+
+export const InputLabel = styled.label`
+  font-weight: 600;
+`;
 
 export const LoginButtonArea = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-export const LoginButton = styled.button`
-  width: 80%;
+export const SubmitButton = styled.button`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   border-radius: 4px;
   font-weight: 700;
   height: 3rem;
@@ -97,32 +120,40 @@ export const LoginButton = styled.button`
       ? css`
           background-color: #ccc;
         `
-      : `background-color : #eee`};
+      : `background-color : #FF614D`};
 `;
 
-export const DividerArea = styled.div`
+export const DividerArea = styled.div<{ $emailExists: boolean }>`
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  visibility: ${({ $emailExists }) => ($emailExists ? 'visible' : 'hidden')};
 `;
 
 export const Divider = styled.hr`
-  width: 47%;
+  width: 53%;
   background-color: #ccc;
   opacity: 40%;
 `;
 
-export const OtherOptions = styled.div`
+export const OtherOptions = styled.div<{ $emailExists: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: fit-content;
   gap: 0.5rem;
   margin: 0 auto;
+  visibility: ${({ $emailExists }) => ($emailExists ? 'visible' : 'hidden')};
 `;
 
 export const Divide = styled.p``;
 
-export const SignUPButton = styled.button``;
+export const SignUpButton = styled(Link)`
+  font-size: 15px;
+`;
 
-export const ChangePwButton = styled.button``;
+export const ChangePwButton = styled(Link)`
+  text-decoration: underline;
+  color: #3705ff;
+  font-size: 15px;
+`;
