@@ -16,11 +16,12 @@ const SignUp = () => {
   const {
     register,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit: onSubmit,
   } = useForm<SignUpSchemeType>({
     resolver: zodResolver(SignUpScheme),
     defaultValues: { email: email ?? '' },
+    mode: 'onChange',
   });
 
   useEffect(() => {
@@ -66,7 +67,9 @@ const SignUp = () => {
             ))}
           </S.InputContainer>
           <S.ButtonArea>
-            <S.SubmitButton>회원가입</S.SubmitButton>
+            <S.SubmitButton $valid={isValid} disabled={!isValid}>
+              회원가입
+            </S.SubmitButton>
           </S.ButtonArea>
         </S.ContentArea>
       </S.SignUpWrapper>

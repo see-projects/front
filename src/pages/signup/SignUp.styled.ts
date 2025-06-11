@@ -73,13 +73,20 @@ export const ButtonArea = styled.div`
   justify-content: center;
 `;
 
-export const SubmitButton = styled(EmailLoginButton)`
+export const SubmitButton = styled(EmailLoginButton)<{ $valid: boolean }>`
   display: flex;
   justify-content: center;
+  background-color: ${({ $valid }) => ($valid ? '#4caf50' : '#ccc')};
+  color: ${({ $valid }) => ($valid ? 'white' : '#666')};
+  transition: background-color 0.2s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #aac;
+    ${({ $valid }) =>
+      $valid &&
+      `
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     background-color: #66bb6a;
+   `}
   }
 `;
