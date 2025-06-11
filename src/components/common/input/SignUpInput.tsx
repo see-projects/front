@@ -1,9 +1,13 @@
 import type { UseFormRegister } from 'react-hook-form';
 import * as S from './SignUpInput.styled';
-import type { SignUpSchemeType } from '../../../models/auth';
+import type {
+  SignUpSchemeNameType,
+  SignUpSchemeType,
+} from '../../../models/auth';
+import { useState } from 'react';
 
 interface SignUpProps {
-  name: 'email' | 'password' | 'confirmPassword' | 'nickname' | 'name';
+  name: SignUpSchemeNameType;
   register: UseFormRegister<SignUpSchemeType>;
   placeholder: string;
   type: 'text' | 'password';
@@ -17,14 +21,24 @@ const SignUpInput = ({
   type,
   value,
 }: SignUpProps) => {
+  const [visible, setVisible] = useState<boolean>(false);
+
+  const inputType =
+    type === 'password' ? (visible ? 'text' : 'password') : type;
+
   return (
     <S.Container>
       <S.SignUpInputText
-        type={type}
+        type={inputType}
         placeholder={placeholder}
         {...register(name)}
         value={value}
       />
+      {(name === 'password' || name === 'confirmPassword') && (
+        <S.ToggleButton type='button' onClick={() => setVisible((v) => !v)}>
+          {visible ? <S.Eye /> : <S.EyeSlash />}
+        </S.ToggleButton>
+      )}
     </S.Container>
   );
 };

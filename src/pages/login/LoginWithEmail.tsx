@@ -7,7 +7,7 @@ import { LoginScheme } from '../../constants/authZodConstants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { LoginSchemeType } from '../../models/auth';
 import { ROUTES } from '../../constants/routes';
-import useCheckEmail from '../../hooks/login/useCheckEmail';
+import useCheckEmail from '../../hooks/auth/login/useCheckEmail';
 
 const LoginWithEmail = () => {
   const navigate = useNavigate();

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 export const Container = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -19,4 +20,28 @@ export const SignUpInputText = styled.input`
     outline: none;
     box-shadow: none;
   }
+`;
+
+export const ToggleButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #666;
+`;
+
+export const Eye = styled(EyeIcon)`
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #666;
+`;
+
+export const EyeSlash = styled(EyeSlashIcon)`
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #666;
 `;
