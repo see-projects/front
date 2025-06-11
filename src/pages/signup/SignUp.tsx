@@ -48,7 +48,7 @@ const SignUp = () => {
         <S.ContentArea onSubmit={onSubmit(handleSubmit)}>
           <S.InputContainer>
             {SIGN_UP_CONSTANTS.map((constants) => (
-              <S.InputWrapper>
+              <S.InputWrapper key={constants.name}>
                 <S.Label>{constants.label}</S.Label>
                 <S.InputArea>
                   <S.Input
