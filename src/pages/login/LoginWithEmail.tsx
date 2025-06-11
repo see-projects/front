@@ -26,7 +26,7 @@ const LoginWithEmail = () => {
 
   const { checkEmail, emailExists } = useCheckEmail();
 
-  const onSubmit = (data: LoginSchemeType) => {
+  const handleSubmitLogin = (data: LoginSchemeType) => {
     console.log(data);
     console.log(errors);
   };
@@ -46,7 +46,7 @@ const LoginWithEmail = () => {
         <S.LogoWrapper>
           <S.Logo src={mainLogo} />
         </S.LogoWrapper>
-        <S.LoginArea onSubmit={onSubmitLogin(onSubmit)}>
+        <S.LoginArea onSubmit={onSubmitLogin(handleSubmitLogin)}>
           <S.LoginInputArea>
             <S.LoginCenterArea $emailExists={true}>
               <S.InputLabelArea>
