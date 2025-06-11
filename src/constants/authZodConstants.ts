@@ -29,10 +29,18 @@ export const SignUpScheme = z
         passwordRegex,
         '총 길이 8~25자, 영문/숫자/특수문자 형태로 입력 해주세요.'
       ),
-    nickname: z.string().max(10, { message: '10자리 이하로 네이밍 해주세요.' }),
-    name: z.string(),
+    nickname: z
+      .string()
+      .nonempty({ message: '이름을 작성해주세요.' })
+      .max(10, { message: '10자리 이하로 네이밍 해주세요.' }),
+    name: z.string().nonempty({ message: '이름을 작성해주세요.' }),
   })
-  .refine(({ password, confirmPassword }) => password === confirmPassword, {
-    message: '비밀번호가 일치하지 않습니다.',
-    path: ['confirmPassword'],
+  .superRefine(({ password, confirmPassword }, ctx) => {
+    if (password !== confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: '비밀번호가 일치하지 않습니다.',
+        path: ['confirmPassword'],
+      });
+    }
   });
