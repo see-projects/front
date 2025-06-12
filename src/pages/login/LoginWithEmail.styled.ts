@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import AuthInput from '../../components/common/input/AuthInput';
+import AuthInput from '../../components/common/input/LoginInput';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -82,9 +82,7 @@ export const LoginCenterArea = styled.div<{ $emailExists: boolean }>`
   }
 `;
 
-export const LoginInput = styled(AuthInput)`
-  margin-top: 15px;
-`;
+export const LoginInput = styled(AuthInput)``;
 
 export const InputLabelArea = styled.div`
   margin-bottom: 10px;
@@ -113,7 +111,6 @@ export const SubmitButton = styled.button`
   padding-right: 1.25rem;
   margin-top: 10px;
   margin-bottom: 30px;
-  cursor: pointer;
 
   ${({ disabled }) =>
     disabled

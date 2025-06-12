@@ -44,4 +44,37 @@ export const OAUTH_PROVIDERS = [
     )}`,
     icon: github,
   },
-];
+] as const;
+
+export const SIGN_UP_CONSTANTS = [
+  {
+    label: '이메일',
+    name: 'email',
+    placeholder: '이메일을 입력하세요.',
+    type: 'text',
+  },
+  {
+    label: '비밀번호',
+    name: 'password',
+    placeholder: '비밀번호를 입력하세요.',
+    type: 'password',
+  },
+  {
+    label: '비밀번호 확인',
+    name: 'confirmPassword',
+    placeholder: '비밀번호를 한 번 더 입력하세요.',
+    type: 'password',
+  },
+  {
+    label: '이름',
+    name: 'name',
+    placeholder: '본명을 입력하세요.',
+    type: 'text',
+  },
+  {
+    label: '닉네임',
+    name: 'nickname',
+    placeholder: '닉네임을 입력하세요.',
+    type: 'text',
+  },
+] as const;

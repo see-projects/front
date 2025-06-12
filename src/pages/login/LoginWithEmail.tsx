@@ -7,7 +7,7 @@ import { LoginScheme } from '../../constants/authZodConstants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { LoginSchemeType } from '../../models/auth';
 import { ROUTES } from '../../constants/routes';
-import useCheckEmail from '../../hooks/login/useCheckEmail';
+import useCheckEmail from '../../hooks/auth/login/useCheckEmail';
 
 const LoginWithEmail = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const LoginWithEmail = () => {
 
   const { checkEmail, emailExists } = useCheckEmail();
 
-  const onSubmit = (data: LoginSchemeType) => {
+  const handleSubmitLogin = (data: LoginSchemeType) => {
     console.log(data);
     console.log(errors);
   };
@@ -46,7 +46,7 @@ const LoginWithEmail = () => {
         <S.LogoWrapper>
           <S.Logo src={mainLogo} />
         </S.LogoWrapper>
-        <S.LoginArea onSubmit={onSubmitLogin(onSubmit)}>
+        <S.LoginArea onSubmit={onSubmitLogin(handleSubmitLogin)}>
           <S.LoginInputArea>
             <S.LoginCenterArea $emailExists={true}>
               <S.InputLabelArea>
